@@ -53,7 +53,7 @@ class UserController extends Controller
     //    die;
 
     //$results = DB::select("SELECT * FROM users");
-    $result = app('db')->select("SELECT * FROM vis_users as u inner join peserta_models p on u.id = p.id_login");
+    $result = app('db')->select("SELECT * FROM vis_users");
     //    $results =  DB::select('select * from vis_users as u inner join peserta_models p on u.id = p.id_login'
     // );
     $login = response()->json(['data' => $result]);
@@ -64,30 +64,30 @@ class UserController extends Controller
     //dump($login);
     // dump($result[0]->id);
     // die;
-    if (!empty($result))
-    {
-        $result = [
-            'name' => 'getuser',
-            'status' =>  'ok',
-            'id' => $result[0]->id,
-            'no_pendaftaran' => $result[0]->no_pendaftaran,
-            'meesage' => 'udah ok gaes'
-        ];
-    }
-    else
-    {
-        $result = [
-            'name' => 'getuser',
-            'status' =>  'null',
+    // if (!empty($result))
+    // {
+    //     $result = [
+    //         'name' => 'getuser',
+    //         'status' =>  'ok',
+    //         'id' => $result[0]->id,
+    //         'no_pendaftaran' => $result[0]->no_pendaftaran,
+    //         'meesage' => 'udah ok gaes'
+    //     ];
+    // }
+    // else
+    // {
+    //     $result = [
+    //         'name' => 'getuser',
+    //         'status' =>  'null',
            
-        ];
-    }
+    //     ];
+    // }
 
     return new UserResource($result);
 
 
 
-        return new UserResource(vis_user::all());
+       
     }
 
     public function getuserlogin(Request $request)
@@ -95,11 +95,12 @@ class UserController extends Controller
         $username = ($request->username);
         $password = md5(($request->pwd));
         
-
-        $result =  DB::select(
-            'select * from vis_users as u inner join peserta_models p on u.id = p.id_login
-        where u.username ="' . $username. '" AND u.password ="'. $password.'"'
-        );
+        $result = app('db')->select('SELECT * FROM vis_users as u inner join peserta_models p on u.id = p.id_login
+        where u.username ="' . $username. '" AND u.password ="'. $password.'"');
+        // $result =  DB::select(
+        //     'select * from vis_users as u inner join peserta_models p on u.id = p.id_login
+        // where u.username ="' . $username. '" AND u.password ="'. $password.'"'
+        // );
         $login = response()->json(['data' => $result]);
         // dump($username);
         // dump($password);

@@ -33,7 +33,8 @@ class TiuController extends Controller
     public function index()
     {
         $result = [];
-        $result =  DB::select('select * from tiu_models');
+        $result = app('db')->select('select * from tiu_models');
+        // $result =  DB::select('select * from tiu_models');
 
 
         return response()->json(['data' => $result]);
@@ -44,11 +45,13 @@ class TiuController extends Controller
         $no_pendaftaran = ($request->no_pendaftaran);
 
         
-
-        $result =  DB::select(
-            'select * from tiu_models
+        $result = app('db')->select('select * from tiu_models
         where no_pendaftaran ="' . $no_pendaftaran.'"'
         );
+        // $result =  DB::select(
+        //     'select * from tiu_models
+        // where no_pendaftaran ="' . $no_pendaftaran.'"'
+        // );
         $TiuUserResult = response()->json(['data' => $result]);
        
         if (!empty($result))

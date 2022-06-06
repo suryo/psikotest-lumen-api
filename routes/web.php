@@ -24,7 +24,7 @@ $router->get('/posts', 'PostsController@index');
 */
 // Route::apiResource('/user', App\Http\Controllers\Api\UserController::class);
 $router->get('/userlogin', 'App\Http\Controllers\Api\UserController@getuserlogin');
-$router->get('/user', 'App\Http\Controllers\Api\UserController@update');
+// $router->get('/user', 'App\Http\Controllers\Api\UserController@update');
 
 
 $router->group(['prefix' => 'api'], function () use ($router) {
@@ -33,55 +33,46 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     * /api/user (post, get method)
     * /api/user/id (get, put, delete method)
     */
-    $router->post('user', 'Vis_userController@store');
+    // $router->post('user', 'App\Http\Controllers\Api\UserController@index');
     $router->get('user', 'api\UserController@index');
-    $router->get('user/{id}', 'Vis_userController@show');
-    $router->put('user/{id}', 'Vis_userController@update');
-    $router->delete('user/{id}', 'Vis_userController@destroy');
+    $router->get('/userlogin', 'api\UserController@getuserlogin');
+    $router->get('user/{id}', 'api\UserController@show');
+    $router->put('user/{id}', 'api\UserController@update');
+    $router->delete('user/{id}', 'api\UserController@destroy');
 
+    
     /*
     * Matches
-    * /api/kota (post, get method)
-    * /api/kota/id (get, put, delete method)
+    * /api/papi (post, get method)
+    * /api/papi/id (get, put, delete method)
     */
-    $router->post('kota', 'Vis_KotaController@store');
-    $router->get('kota', 'Vis_KotaController@index');
-    $router->get('kota/{id}', 'Vis_KotaController@show');
-    $router->put('kota/{id}', 'Vis_KotaController@update');
-    $router->delete('kota/{id}', 'Vis_KotaController@destroy');
+    $router->post('papi', 'api\PapiController@store');
+    $router->get('papi', 'api\PapiController@index');
+    $router->get('papiuserresult', 'api\PapiController@getPapiUserResult');
+    $router->get('papi/{id}', 'api\PapiController@show');
+    $router->put('papi/{id}', 'api\PapiController@update');
+    $router->delete('papi/{id}', 'api\PapiController@destroy');
 
-    /*
+     /*
     * Matches
-    * /api/kecamatan (post, get method)
-    * /api/kecamatan/id (get, put, delete method)
+    * /api/tiu (post, get method)
+    * /api/tiu/id (get, put, delete method)
     */
-    $router->post('kecamatan', 'Vis_KecamatanController@store');
-    $router->get('kecamatan', 'Vis_KecamatanController@index');
-    $router->get('kecamatan/{id}', 'Vis_KecamatanController@show');
-    $router->put('kecamatan/{id}', 'Vis_KecamatanController@update');
-    $router->delete('kecamatan/{id}', 'Vis_KecamatanController@destroy');
+    $router->post('tiu', 'api\TiuController@store');
+    $router->get('tiu', 'api\TiuController@index');
+    $router->get('tiu/{id}', 'api\TiuController@show');
+    $router->put('tiu/{id}', 'api\TiuController@update');
+    $router->delete('tiu/{id}', 'api\TiuController@destroy');
 
-    /*
+     /*
     * Matches
-    * /api/kabupaten (post, get method)
-    * /api/kabupaten/id (get, put, delete method)
+    * /api/papi (post, get method)
+    * /api/papi/id (get, put, delete method)
     */
-    $router->post('kabupaten', 'Vis_KabupatenController@store');
-    $router->get('kabupaten', 'Vis_KabupatenController@index');
-    $router->get('kabupaten/{id}', 'Vis_KabupatenController@show');
-    $router->put('kabupaten/{id}', 'Vis_KabupatenController@update');
-    $router->delete('kabupaten/{id}', 'Vis_KabupatenController@destroy');
-
-
-    /*
-    * Matches
-    * /api/desa (post, get method)
-    * /api/desa/id (get, put, delete method)
-    */
-    $router->post('desa', 'Vis_DesaController@store');
-    $router->get('desa', 'Vis_DesaController@index');
-    $router->get('desa/{id}', 'Vis_DesaController@show');
-    $router->put('desa/{id}', 'Vis_DesaController@update');
-    $router->delete('desa/{id}', 'Vis_DesaController@destroy');
+    $router->post('riasec', 'api\RiasecController@store');
+    $router->get('riasec', 'api\RiasecController@index');
+    $router->get('riasec/{id}', 'api\RiasecController@show');
+    $router->put('riasec/{id}', 'api\RiasecController@update');
+    $router->delete('riasec/{id}', 'api\RiasecController@destroy');
 });
 

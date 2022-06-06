@@ -33,7 +33,8 @@ class PapiController extends Controller
     public function index()
     {
         $result = [];
-        $result =  DB::select('select * from papi_models');
+        $result = app('db')->select('select * from papi_models');
+        // $result =  DB::select('select * from papi_models');
 
 
         return response()->json(['data' => $result]);
@@ -45,11 +46,13 @@ class PapiController extends Controller
         $no_pendaftaran = ($request->no_pendaftaran);
 
         
-
-        $result =  DB::select(
-            'select * from papi_models
+        $result = app('db')->select('select * from papi_models
         where no_pendaftaran ="' . $no_pendaftaran.'"'
         );
+        // $result =  DB::select(
+        //     'select * from papi_models
+        // where no_pendaftaran ="' . $no_pendaftaran.'"'
+        // );
         $PapiUserResult = response()->json(['data' => $result]);
        
         if (!empty($result))

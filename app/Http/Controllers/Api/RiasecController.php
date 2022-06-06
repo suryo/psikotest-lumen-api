@@ -33,7 +33,8 @@ class RiasecController extends Controller
     public function index()
     {
         $result = [];
-        $result =  DB::select('select * from riasec_models');
+        $result = app('db')->select('select * from riasec_models');
+        // $result =  DB::select('select * from riasec_models');
 
 
         return response()->json(['data' => $result]);
@@ -44,11 +45,13 @@ class RiasecController extends Controller
         $no_pendaftaran = ($request->no_pendaftaran);
 
         
-
-        $result =  DB::select(
-            'select * from riasec_models
+        $result = app('db')->select( 'select * from riasec_models
         where no_pendaftaran ="' . $no_pendaftaran.'"'
         );
+        // $result =  DB::select(
+        //     'select * from riasec_models
+        // where no_pendaftaran ="' . $no_pendaftaran.'"'
+        // );
         $RiasecUserResult = response()->json(['data' => $result]);
        
         if (!empty($result))
