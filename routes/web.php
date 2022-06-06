@@ -34,11 +34,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     * /api/user/id (get, put, delete method)
     */
     // $router->post('user', 'App\Http\Controllers\Api\UserController@index');
-    $router->get('user', 'api\UserController@index');
-    $router->get('/userlogin', 'api\UserController@getuserlogin');
-    $router->get('user/{id}', 'api\UserController@show');
-    $router->put('user/{id}', 'api\UserController@update');
-    $router->delete('user/{id}', 'api\UserController@destroy');
+    $router->get('user', 'Api\UserController@index');
+    $router->get('/userlogin', 'Api\UserController@getuserlogin');
+    $router->get('user/{id}', 'Api\UserController@show');
+    $router->put('user/{id}', 'Api\UserController@update');
+    $router->delete('user/{id}', 'Api\UserController@destroy');
 
     
     /*
@@ -46,33 +46,33 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     * /api/papi (post, get method)
     * /api/papi/id (get, put, delete method)
     */
-    $router->post('papi', 'api\PapiController@store');
-    $router->get('papi', 'api\PapiController@index');
-    $router->get('papiuserresult', 'api\PapiController@getPapiUserResult');
-    $router->get('papi/{id}', 'api\PapiController@show');
-    $router->put('papi/{id}', 'api\PapiController@update');
-    $router->delete('papi/{id}', 'api\PapiController@destroy');
+    $router->post('papi', 'Api\PapiController@store');
+    $router->get('papi', 'Api\PapiController@index');
+    $router->get('papiuserresult', 'Api\PapiController@getPapiUserResult');
+    $router->get('papi/{id}', 'Api\PapiController@show');
+    $router->put('papi/{id}', 'Api\PapiController@update');
+    $router->delete('papi/{id}', 'Api\PapiController@destroy');
 
      /*
     * Matches
     * /api/tiu (post, get method)
     * /api/tiu/id (get, put, delete method)
     */
-    $router->post('tiu', 'api\TiuController@store');
-    $router->get('tiu', 'api\TiuController@index');
-    $router->get('tiu/{id}', 'api\TiuController@show');
-    $router->put('tiu/{id}', 'api\TiuController@update');
-    $router->delete('tiu/{id}', 'api\TiuController@destroy');
+    $router->post('tiu', 'Api\TiuController@store');
+    $router->get('tiu', 'Api\TiuController@index');
+    $router->get('tiu/{id}', 'Api\TiuController@show');
+    $router->put('tiu/{id}', 'Api\TiuController@update');
+    $router->delete('tiu/{id}', 'Api\TiuController@destroy');
 
      /*
     * Matches
     * /api/papi (post, get method)
     * /api/papi/id (get, put, delete method)
     */
-    $router->post('riasec', 'api\RiasecController@store');
-    $router->get('riasec', 'api\RiasecController@index');
-    $router->get('riasec/{id}', 'api\RiasecController@show');
-    $router->put('riasec/{id}', 'api\RiasecController@update');
-    $router->delete('riasec/{id}', 'api\RiasecController@destroy');
+    $router->post('riasec', 'Api\RiasecController@store');
+    $router->get('riasec', 'Api\RiasecController@index');
+    $router->get('riasec/{id}', 'Api\RiasecController@show');
+    $router->put('riasec/{id}', 'Api\RiasecController@update');
+    $router->delete('riasec/{id}', 'Api\RiasecController@destroy');
 });
 
