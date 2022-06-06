@@ -1,24 +1,53 @@
-# Lumen PHP Framework
+# PSIKOTEST-LARAVEL API
+## Install
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+1. git clone https://github.com/suryo/psikotest-laravel-api
+2. composer install
+3. copy .env.example to .env
+4. php artisan key:generate
+5. php artisan serve
+6. dump db_vis.sql
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Check Route
+php artisan route:list
 
-## Official Documentation
+## CREATE NEW Branch
+git checkout -b nama_branch
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+## Endpoint
+### USER
+* POST :: /api/user
+* GET :: /api/user
+* GET :: /api/userlogin/?username=ali&pwd=ali123
+* PUT :: /api/user/2
 
-## Contributing
+### PAPI
+* POST :: /api/papi
+* GET :: /api/papi
+* GET :: /api/papi
+* PUT :: /api/papi/2
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Membuat Model
 
-## Security Vulnerabilities
+php artisan make:model riasec_model -m
+example
+-r menandakan membuat model beserta controller
+php artisan make:model tiu_model -r 
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+## Membuat Resource
 
-## License
+php artisan make:resource nama_resource
+example :
+php artisan make:resource RiasecResource
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Membuat Controller
+php artisan make:controller Api\RiasecController -r 
+
+## Check Route
+php artisan route:list
+
+## API DOCUMENTATION
+1. install composer require "darkaonline/l5-swagger"
+2. run php artisan l5-swagger:generate
+3. run php artisan serve
+4. open url -> http://127.0.0.1:8000/api/documentation
