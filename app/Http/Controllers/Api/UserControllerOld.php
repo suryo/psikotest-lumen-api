@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Validator;
     )
     */
 
-class UserController extends Controller
+class UserControllerOld extends Controller
 {  
     /**
      * Display a listing of the resource.

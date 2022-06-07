@@ -10,37 +10,37 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Laravel\Lumen\Auth\Authorizable;
 
-class Vis_user extends Model
-{
-    use HasFactory;
+// class Vis_user extends Model
+// {
+//     use HasFactory;
 
+//     protected $fillable = [
+//         'username', 'password'
+//     ];
+
+// }
+
+
+class Vis_user extends Model implements AuthenticatableContract, AuthorizableContract
+{
+    use Authenticatable, Authorizable, HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'username', 'password'
+        'name', 'email',
     ];
 
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+    ];
 }
-
-
-// class Vis_user extends Model implements AuthenticatableContract, AuthorizableContract
-// {
-//     use Authenticatable, Authorizable, HasFactory;
-
-//     /**
-//      * The attributes that are mass assignable.
-//      *
-//      * @var array
-//      */
-//     protected $fillable = [
-//         'name', 'email',
-//     ];
-
-//     /**
-//      * The attributes excluded from the model's JSON form.
-//      *
-//      * @var array
-//      */
-//     protected $hidden = [
-//         'password',
-//     ];
-// }
 
