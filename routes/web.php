@@ -31,14 +31,15 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     /*
     * Matches
     * /api/user (post, get method)
+    * /api/userlogin (post, get method)
     * /api/user/id (get, put, delete method)
     */
-    // $router->post('user', 'App\Http\Controllers\Api\UserController@index');
-    $router->get('user', 'Api\UserController@index');
-    $router->get('/userlogin', 'Api\UserController@getuserlogin');
-    $router->get('user/{id}', 'Api\UserController@show');
-    $router->put('user/{id}', 'Api\UserController@update');
-    $router->delete('user/{id}', 'Api\UserController@destroy');
+    
+    $router->get('user', 'UserController@index');
+    $router->get('userlogin', 'UserController@getuserlogin');
+    $router->get('user/{id}', 'UserController@show');
+    $router->put('user/{id}', 'UserController@update');
+    $router->delete('user/{id}', 'UserController@destroy');
 
     
     /*
