@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\{Request, JsonResponse};
-use App\Models\Vis_user;
-use App\Models\Provinsi;
+use App\Models\vis_user;
+// use App\Models\Provinsi;
 use Illuminate\Support\Facades\DB;
 
 
