@@ -43,13 +43,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
     /*
     * Matches
-    * /api/user (post, get method)
-    * /api/userlogin (post, get method)
-    * /api/user/id (get, put, delete method)
+    * /api/peserta (post, get method)
+    * /api/peserta/id (get, put, delete method)
     */
     
     $router->get('peserta', 'PesertaController@index');
-    $router->get('userlogin', 'PesertaController@getuserlogin');
     $router->get('peserta/{id}', 'PesertaController@show');
     $router->put('peserta/{id}', 'PesertaController@update');
     $router->delete('peserta/{id}', 'PesertaController@destroy');
