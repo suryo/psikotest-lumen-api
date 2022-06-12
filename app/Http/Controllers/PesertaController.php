@@ -86,7 +86,8 @@ class PesertaController extends Controller
     {
         $result = [];
         $data = ($request->json("data"));
-
+// dump($data[0]);
+// die;
         if (count($data) == 0) {
             $validator = Validator::make($request->all(), [
                 'no_pendaftaran'   => 'required'

@@ -31,7 +31,10 @@ class Peserta_model extends Model implements AuthenticatableContract, Authorizab
      * @var array
      */
     protected $fillable = [
-        
+        'no_pendaftaran',
+        'nama',
+        'asal_sekolah',
+        'status'
     ];
 
     /**
