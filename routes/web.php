@@ -46,7 +46,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     * /api/peserta (post, get method)
     * /api/peserta/id (get, put, delete method)
     */
-    
+    $router->post('peserta', 'PesertaController@store');
     $router->get('peserta', 'PesertaController@index');
     $router->get('peserta/{id}', 'PesertaController@show');
     $router->put('peserta/{id}', 'PesertaController@update');
