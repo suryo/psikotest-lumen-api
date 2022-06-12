@@ -100,30 +100,26 @@ class PesertaController extends Controller
         } else {
             for ($d = 0; $d < count($data); $d++) {
                 //save to database
-                $papi = papi_model::create([
+                $peserta = Peserta_model::create([
                     'no_pendaftaran'     => $data[$d]["no_pendaftaran"],
-                    'jwb1' => $data[$d]['jwb1'],
-                    'jwb2' => $data[$d]['jwb2'],
-                    'jwb3' => $data[$d]['jwb3'],
-                    'jwb4' => $data[$d]['jwb4'],
-                    'jwb5' => $data[$d]['jwb5']
+                    'nama' => $data[$d]['nama'],
+                    'asal_sekolah' => $data[$d]['asal_sekolah'],
+                    'status' => $data[$d]['status'],
 
                 ]);
                 $p = [
-                    'name' => 'Insert Papi',
-                    'no_pendaftaran' => $data[$d]["no_pendaftaran"],
-                    'jwb1' => $data[$d]['jwb1'],
-                    'jwb2' => $data[$d]['jwb2'],
-                    'jwb3' => $data[$d]['jwb3'],
-                    'jwb4' => $data[$d]['jwb4'],
-                    'jwb5' => $data[$d]['jwb5'],
+                    'name' => 'Insert Peserta',
+                    'no_pendaftaran'     => $data[$d]["no_pendaftaran"],
+                    'nama' => $data[$d]['nama'],
+                    'asal_sekolah' => $data[$d]['asal_sekolah'],
+                    'status' => $data[$d]['status'],
                     'status' => 'success', 'code' => 200
                 ];
                 array_push($result, $p);
             }
         }
 
-        return new PapiResource($result);
+        return new PesertaResource($result);
     }
 
     // /**
