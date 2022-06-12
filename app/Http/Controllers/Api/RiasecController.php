@@ -42,37 +42,187 @@ class RiasecController extends Controller
 
     public function getRiasecUserResult(Request $request)
     {   
-        $no_pendaftaran = ($request->no_pendaftaran);
+          
+  $r =  array(1, 7, 14, 22, 30, 32, 37);
+  $i =  array(2, 11, 18, 21, 26, 33, 39);
+  $a =  array(3, 8, 17, 23, 27, 31, 41);
+  $s =  array(4, 12, 13, 20, 28, 34, 40);
+  $e =  array(5, 10, 16, 19, 29, 36, 42);
+  $c =  array(6, 9, 15, 24, 25, 35, 38);
 
-        
-        $result = app('db')->select( 'select * from riasec_models
-        where no_pendaftaran ="' . $no_pendaftaran.'"'
-        );
-        // $result =  DB::select(
-        //     'select * from riasec_models
-        // where no_pendaftaran ="' . $no_pendaftaran.'"'
-        // );
-        $RiasecUserResult = response()->json(['data' => $result]);
+
+        $result = app('db')->select( 'select no_pendaftaran as nop,username from `user` as us ORDER BY username ASC');
+
+ $response=[];
+for ($d = 0; $d < count($result); $d++) {
+   
+    $ss = 0;
+
+    $rowriasec = app('db')->select('select * from `riasec_result` where no_pendaftaran = '.$result[$d]->nop);
+    for ($j = 0; $j < count($rowriasec); $j++) {
+        $rs =  0;
+        $is =  0;
+        $as =  0;
+        $ss =  0;
+        $es =  0;
+        $cs =  0;
+        $desk = " ";
+
+        for ($x=0; $x<count($r); $x++)
+        {
+           
+            $varrs = ('jawab'.$r[$x]);
+            // dump(($varrs));
+            // dump(($rowriasec[$j]->$varrs));
+           
+            if (($rowriasec[$j]->$varrs)=="x")
+            {
+                $rs = $rs + 1;
+            }
+
+        }
+
+
+        // dump("is");
+        for ($x=0; $x<count($i); $x++)
+        {
+            $varis = ('jawab'.$i[$x]);
+            // dump(($varis));
+            // dump(($rowriasec[$j]->$varis));
+            if (($rowriasec[$j]->$varis)=="x")
+            {
+                $is = $is + 1;
+            }
+        }
+        // dump("as");
+        for ($x=0; $x<count($a); $x++)
+        { 
+            $varas = ('jawab'.$a[$x]);
+            // dump(($rowriasec[$j]->$varas));
+            if (($rowriasec[$j]->$varas)=="x")
+            {
+                $as = $as + 1;
+            }
+        }
+   
+        // dump("ss");
+        for ($x=0; $x<count($s); $x++)
+        {
+            $varss = ('jawab'.$s[$x]);
+            // dump(($varss));
+            // dump(($rowriasec[$j]->$varss));
+            if (($rowriasec[$j]->$varss)=="x")
+            {
+                $ss = $ss + 1;
+            }
+        }
+        // dump("es");
+        for ($x=0; $x<count($e); $x++)
+        {
+            $vares = ('jawab'.$e[$x]);
+            // dump(($vares));
+            // dump(($rowriasec[$j]->$vares));
+            if (($rowriasec[$j]->$vares)=="x")
+            {
+                $es = $es + 1;
+            }
+        }
+        // dump("cs");
+        for ($x=0; $x<count($c); $x++)
+        {
+            $varcs = ('jawab'.$c[$x]);
+            // dump(($varcs));
+            // dump(($rowriasec[$j]->$varcs));
+            if (($rowriasec[$j]->$varcs)=="x")
+            {
+                $cs = $cs + 1;
+            }
+        }
+
+
+$total = array(
+    'r' => $rs,
+    'i' => $is,
+    'a' => $as,
+    's' => $ss,
+    'e' => $es,
+    'c' => $cs,
+);
+
+$max = max($total);
+
+if($rs==$max)
+{
+   $desk = $desk."individu dengan minat ini biasanya memiliki keahlian atletik atau mekanik dan menyukai kegiatan luar ruangan dengan peralatan atau mesin. Ex: mekanik, ATC (air traffic controller), surveyor, ahli elektronik dan petani.<br>"; 
+}
+
+if($is==$max)
+{
+   $desk = $desk." Individu dengan minat ini biasanya memiliki keahlian sains dan matematika, menyukai kesendirian dalam pekerjaan maupun memecahkan masalah. Ex : ahli biologi,kimia, fisika, geologi, laboratorium dan penelitian termasuk teknisi medis.<br>"; 
+}
+
+if($as==$max)
+{
+   $desk = $desk." Individu dengan minat ini biasanya memiliki keahlian seni, menyenangi pekerjaan orisinal dan memiliki imajinasi tinggi. 
+Ex : composer, musisi, pengarah panggung, penari, decorator,  aktor atau aktris dan penulis.<br>"; 
+}
+
+if($ss==$max)
+	 {
+		$desk = $desk." Individu dengan minat ini biasanya menyenangi keberadaan diri dalam sosial, tertarik bagaimana bergaul dengan situasi sosial dan suka membantu permasalahan orang lain. Ex : guru, terapis, pekerja religius, konselor, psikolog, perawat.<br>"; 
+	 }
+
+    }
+    if($es==$max)
+    {
+       $desk = $desk." Individu dengan minat ini biasanya memiliki jiwa kepemimpinan, kemampuan berbicara di depan umum, tertarik dengan uang dan politik dan senang untuk mempengaruhi orang lain.<br>"; 
+    }
+
+    if($cs==$max)
+    {
+       $desk = $desk." Individu dengan minat ini biasanya memiliki keahlian klerikal dan matematika, menyukai pekerjaan dalam ruang dan mengelola sesuatu agar rapi (terorganisir). Ex: analis keuangan, pegawai perpustakaan, banking, ahli pajak, sekretaris, korespondensi, akunting.<br>"; 
+    }
+
+    //  dump($desk);
+     $resriasec = [
+        'status' =>  'ok',
+        'no_pendaftaran' => $result[$d]->nop,
+        'username' => $result[$d]->username,
+        'r' => $rs,
+        'i' => $is,
+        'a' => $as,
+        's' => $ss,
+        'e' => $es,
+        'c' => $cs,
+        'deskripsi' => $desk
+    ]; 
+
+    array_push($response, $resriasec);
+
+}
        
-        if (!empty($result))
-        {
-            $result = [
-                'name' => 'getuser',
-                'status' =>  'ok',
-                'no_pendaftaran' => $result[0]->no_pendaftaran,
-                'meesage' => 'udah ada gaes'
-            ];
-        }
-        else
-        {
-            $result = [
-                'name' => 'getuser',
-                'status' =>  'null',
-               
-            ];
-        }
+        
 
-        return new RiasecResource($result);
+       
+        // if (!empty($result))
+        // {
+        //     $result = [
+        //         'name' => 'getuser',
+        //         'status' =>  'ok',
+        //         'no_pendaftaran' => $result[0]->no_pendaftaran,
+        //         'meesage' => 'udah ada gaes'
+        //     ];
+        // }
+        // else
+        // {
+        //     $result = [
+        //         'name' => 'getuser',
+        //         'status' =>  'null',
+               
+        //     ];
+        // }
+
+        return new RiasecResource($response);
     }
 
     /**

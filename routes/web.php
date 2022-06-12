@@ -79,11 +79,12 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
      /*
     * Matches
-    * /api/papi (post, get method)
-    * /api/papi/id (get, put, delete method)
+    * /api/riasec (post, get method)
+    * /api/riasec/id (get, put, delete method)
     */
     $router->post('riasec', 'Api\RiasecController@store');
     $router->get('riasec', 'Api\RiasecController@index');
+    $router->get('riasecresult', 'Api\RiasecController@getRiasecUserResult');
     $router->get('riasec/{id}', 'Api\RiasecController@show');
     $router->put('riasec/{id}', 'Api\RiasecController@update');
     $router->delete('riasec/{id}', 'Api\RiasecController@destroy');
