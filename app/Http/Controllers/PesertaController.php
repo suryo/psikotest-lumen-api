@@ -256,10 +256,53 @@ class PesertaController extends Controller
     //  *      )
     //  * )
     //  */
-    // public function destroy(vis_user $user)
-    // {
-    //     $user->delete();
+    public function destroy($no_pendaftaran,Peserta_model $peserta_models)
+    {
+        
+        // dd($test);
+        $result=[];
+        $data=[];
+        //  dd($request->data[0]["no_pendaftaran"]);
+        //dd($peserta_models);
+        $list= DB::table('peserta_models')->where('no_pendaftaran',$no_pendaftaran);
+     
+        foreach ($list->get() as $user)
+{
+    $nama=($user->nama);
+    $asal_sekolah=($user->nama);
+    $status=($user->nama);
+}
+// $data = $list->get();
+        // dd($data->nama);
+        // dd(count($list[0]));
+        if(count($list->get())<>0)
+        {
+            $list->delete();
 
-    //     return new UserResource($user);
-    // }
+            $p = [
+                'name' => 'deleted Peserta',
+                'no_pendaftaran'     => $no_pendaftaran,
+                'nama' => $nama,
+                'asal_sekolah' => $asal_sekolah,
+                'status' => $status,
+                'status' => 'deleted', 'code' => 200
+            ];
+
+        }
+     else{
+        $p = [
+            'name' => 'deleted Peserta',
+            'no_pendaftaran'     => $no_pendaftaran,
+            'message' => 'failed'
+        ];
+     }
+
+       
+        array_push($result, $p);
+
+
+
+return new PesertaResource($result);
+
+    }
 }

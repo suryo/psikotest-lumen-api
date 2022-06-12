@@ -50,7 +50,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('peserta', 'PesertaController@index');
     $router->get('peserta/{id}', 'PesertaController@show');
     $router->put('peserta/{id}', 'PesertaController@update');
-    $router->delete('peserta/{id}', 'PesertaController@destroy');
+    $router->delete('peserta/{no_pendaftaran}', 'PesertaController@destroy');
 
 
     
