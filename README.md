@@ -1,11 +1,11 @@
-# PSIKOTEST-LARAVEL API
+# PSIKOTEST-LUMEN API
 ## Install
 
 1. git clone https://github.com/suryo/psikotest-laravel-api
 2. composer install
 3. copy .env.example to .env
 4. php artisan key:generate
-5. php artisan serve
+5. php artisan serve / php -S localhost:8000 -t public
 6. dump db_vis.sql
 
 ## Check Route
